@@ -29,6 +29,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "From Yesterday"
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        let lebel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: 24))
+        lebel.text = "From Yesterday"
+        lebel.textColor = UIColor.purple
+        lebel.textAlignment = .center
+        navigationItem.titleView = lebel
         degreeLabel.text = nil
         areaLabel.text = nil
         dateLabel.text = nil
@@ -43,6 +51,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
 
         }
+    }
+}
+
+// MARK: Target-Action Method
+
+extension ViewController {
+    @objc func refresh(){
+        
     }
 }
 
@@ -80,7 +96,7 @@ extension ViewController {
                 
                 self.areaLabel.text = area
                 self.degreeLabel.text = currentWeather.status
-//                SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss()
             })
         }
     }

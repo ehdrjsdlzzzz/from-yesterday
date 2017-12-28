@@ -7,14 +7,21 @@
 //
 
 import Foundation
-//
-//class Weather {
-//    var area: String
-//    var status: String
-//    var currentTemp: String
-//    var todayMaxTemp: String
-//    var todayMintemp: String
-//    var windSpeed: String
-//    
-//}
+
+class Weather {
+    var city: String
+    var county: String?
+    var village: String?
+    var status: String
+    var currentTemp: String?
+    var todayMaxTemp: String?
+    var todayMintemp: String?
+    var windSpeed: String?
+    
+    init(city: String, status: String) {
+        self.city = city
+        self.status = status
+    }
+    
+}
 

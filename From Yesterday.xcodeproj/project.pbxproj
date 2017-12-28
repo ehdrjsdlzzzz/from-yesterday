@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		3E14884A1FF4BBED00F2711E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1488491FF4BBED00F2711E /* AppDelegate.swift */; };
 		3E14884C1FF4BBED00F2711E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14884B1FF4BBED00F2711E /* ViewController.swift */; };
-		3E14884F1FF4BBED00F2711E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E14884D1FF4BBED00F2711E /* Main.storyboard */; };
 		3E1488511FF4BBED00F2711E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E1488501FF4BBED00F2711E /* Assets.xcassets */; };
 		3E1488541FF4BBED00F2711E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1488521FF4BBED00F2711E /* LaunchScreen.storyboard */; };
 		3E14885D1FF4DC7700F2711E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14885C1FF4DC7700F2711E /* Weather.swift */; };
+		3E4F0DBA1FF5371600C809A2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4F0DB91FF5371600C809A2 /* ViewController.xib */; };
 		661C9AA90BA79B6079F8E152 /* Pods_From_Yesterday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +21,11 @@
 		3E1488461FF4BBED00F2711E /* From Yesterday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "From Yesterday.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1488491FF4BBED00F2711E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E14884B1FF4BBED00F2711E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3E14884E1FF4BBED00F2711E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E1488501FF4BBED00F2711E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E1488531FF4BBED00F2711E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E1488551FF4BBED00F2711E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E14885C1FF4DC7700F2711E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		3E4F0DB91FF5371600C809A2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		54CD356C7A199BF1AA380673 /* Pods-From Yesterday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-From Yesterday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday.debug.xcconfig"; sourceTree = "<group>"; };
 		EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_From_Yesterday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,10 +72,9 @@
 		3E1488481FF4BBED00F2711E /* From Yesterday */ = {
 			isa = PBXGroup;
 			children = (
+				3E4F0DB71FF536FA00C809A2 /* ViewControllers */,
 				3E14885B1FF4DC6800F2711E /* Model */,
 				3E1488491FF4BBED00F2711E /* AppDelegate.swift */,
-				3E14884B1FF4BBED00F2711E /* ViewController.swift */,
-				3E14884D1FF4BBED00F2711E /* Main.storyboard */,
 				3E1488501FF4BBED00F2711E /* Assets.xcassets */,
 				3E1488521FF4BBED00F2711E /* LaunchScreen.storyboard */,
 				3E1488551FF4BBED00F2711E /* Info.plist */,
@@ -89,6 +88,15 @@
 				3E14885C1FF4DC7700F2711E /* Weather.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3E4F0DB71FF536FA00C809A2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E14884B1FF4BBED00F2711E /* ViewController.swift */,
+				3E4F0DB91FF5371600C809A2 /* ViewController.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B0A69C665F02626D6CD5D648 /* Frameworks */ = {
@@ -163,7 +171,7 @@
 			files = (
 				3E1488541FF4BBED00F2711E /* LaunchScreen.storyboard in Resources */,
 				3E1488511FF4BBED00F2711E /* Assets.xcassets in Resources */,
-				3E14884F1FF4BBED00F2711E /* Main.storyboard in Resources */,
+				3E4F0DBA1FF5371600C809A2 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,10 +186,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -237,14 +247,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3E14884D1FF4BBED00F2711E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E14884E1FF4BBED00F2711E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3E1488521FF4BBED00F2711E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -376,7 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Sample.From-Yesterday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -393,7 +395,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Sample.From-Yesterday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
