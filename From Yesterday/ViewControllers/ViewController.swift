@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import SVProgressHUD
 
 class ViewController: UIViewController, CLLocationManagerDelegate{
     
@@ -17,12 +18,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+   
+    var currentWeather: Weather?
+    
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         degreeLabel.text = nil
         areaLabel.text = nil
+        dateLabel.text = nil
+        
+        setCurrentDate()
         
         locationManager.requestWhenInUseAuthorization()
         
@@ -35,43 +46,74 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
 }
 
+// MARK: Additional Method
+
+extension ViewController {
+    func setCurrentDate(){
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let stringDate: String = dateFormatter.string(from: date)
+        let dateArray = stringDate.split(separator: "-")
+        self.dateLabel.text = "\(dateArray[2])일"
+    }
+}
+
+// MARK: CLLocationManagerDelegate
 extension ViewController {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            getUserLocation(lat: location.coordinate.latitude, lon: location.coordinate.longitude, completed: { (area, sky) in
-                
-                let date = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy"
-                let stringDate: String = dateFormatter.string(from: date)
-                let dateArray = stringDate.split(separator: "-")
-                print(dateArray)
+            getUserLocation(lat: location.coordinate.latitude, lon: location.coordinate.longitude, completed: {
+                print("finish")
+                guard let currentWeather = self.currentWeather else {return}
                 self.locationManager.pausesLocationUpdatesAutomatically = true
                 self.locationManager.stopUpdatingLocation()
+                var area = ""
+                area += currentWeather.city
+                if let county = currentWeather.county {
+                    area += " \(county)"
+                }
+                
+                if let village = currentWeather.village {
+                    area += " \(village)"
+                }
+                
                 self.areaLabel.text = area
-                self.degreeLabel.text = sky
-                self.dateLabel.text = "Today : \(dateArray[2])년 \(dateArray[1])월 \(dateArray[0])일"
+                self.degreeLabel.text = currentWeather.status
+//                SVProgressHUD.dismiss()
             })
         }
     }
     
-    func getUserLocation(lat:CLLocationDegrees, lon: CLLocationDegrees, completed: @escaping ((String, String)->())){
+    func getUserLocation(lat:CLLocationDegrees, lon: CLLocationDegrees, completed: @escaping (()->())){
+        print("Tracking...!")
         let headers: HTTPHeaders = [
-            "appKey" : "cb1e61d2-515c-398c-a45c-fd7dc8aba004"
+            "appKey" : "1fde96e3-0f5e-3f0c-86d2-a949fd339c14"
         ]
-        let url = "http://apis.skplanetx.com/weather/current/minutely?version=1&lat=\(lat)&lon=\(lon)"
-        print(lat, lon)
+        let url = "http://apis.skplanetx.com/weather/current/hourly?version=1&lat=\(lat)&lon=\(lon)"
         Alamofire.request(url, headers: headers).responseJSON(completionHandler: { (response) in
+            SVProgressHUD.show()
             guard let result = response.result.value as? [String : Any] else { return }
             guard let weather = result["weather"] as? [String: Any] else {return}
-            guard let weatherHourly = weather["minutely"] as? [[String: Any]] else {return}
-            guard let station = weatherHourly[0]["station"] as? [String: String] else {return}
+            guard let weatherHourly = weather["hourly"] as? [[String: Any]] else {return}
+            guard let grid = weatherHourly[0]["grid"] as? [String: String] else {return}
             guard let sky = weatherHourly[0]["sky"] as? [String : String] else { return }
             guard let skyStatus = sky["name"] else {return}
-            guard let area = station["name"] else {return}
+            guard let city = grid["city"] else {return}
             
-            print(weather)
-            completed(area, skyStatus)
+            self.currentWeather = Weather(city: city, status: skyStatus)
+            if let county = grid["county"] {
+                print(county)
+                self.currentWeather?.county = county
+            }
+            
+            if let village = grid["village"] {
+                print(village)
+                self.currentWeather?.village = village
+            }
+            
+        
+            completed()
         })
     }
     

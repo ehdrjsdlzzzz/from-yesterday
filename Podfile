@@ -3,4 +3,5 @@
 target 'From Yesterday' do
   use_frameworks!
   pod 'Alamofire'
+  pod 'SVProgressHUD'
 end
