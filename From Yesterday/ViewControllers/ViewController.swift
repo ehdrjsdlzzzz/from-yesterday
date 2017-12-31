@@ -17,13 +17,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currentLabel: UILabel!
     @IBOutlet weak var minMaxLabel: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
     
     var currentLocation: CLLocation!
-    var currentWeather: CurrentWeather?
+    var country:String?
+    var city:String?
     var forecastWeather: [ForecastWeather] = []
     
     let locationManager = CLLocationManager()
-    var dateArray:[String.SubSequence] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,7 @@ extension ViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate: String = dateFormatter.string(from: date)
-        dateArray = stringDate.split(separator: "-")
+        var dateArray = stringDate.split(separator: "-")
         self.dateLabel.text = "\(dateArray[2])일"
     }
     
@@ -75,10 +76,15 @@ extension ViewController {
             downloadCurrentWeather {
                 print(Location.shared.lat)
                 print(Location.shared.lon)
-                self.areaLabel.text = self.currentWeather?.city
-                self.statusLabel.text = self.currentWeather?.status
-                self.currentLabel.text = "\(self.currentWeather!.current)"
-                self.minMaxLabel.text = "\(self.currentWeather!.max)/\(self.currentWeather!.min)"
+                self.areaLabel.text = self.country!
+                self.statusLabel.text = self.city
+                self.currentLabel.text = "\(self.forecastWeather[0].status)"
+                let weatherImage = Weather(rawValue:Int(self.forecastWeather[0].code))?.image()
+                print(weatherImage!)
+                self.weatherIcon.image = UIImage(named: weatherImage!)
+                self.forecastWeather.forEach({
+                    print("\($0.day)일 \($0.tc)도 최대\($0.tmax)/최소\($0.tmin) 습도: \($0.humidity) 코드\($0.code)")
+                })
             }
         } else {
             locationManager.requestWhenInUseAuthorization()
@@ -103,12 +109,32 @@ extension ViewController {
             guard let location = forecastDays[0]["location"] as? [String:String] else {return}
             guard let country = location["country"] else {return}
             guard let city = location["city"] else {return}
+            self.country = country
+            self.city = city
             
             guard let forecast = forecastDays[0]["forecast"] as? [[String:Any]] else {return}
-            forecast.forEach({print($0)})
-            forecast.forEach({print($0["time"] as! String)})
-            print("Country : \(country)")
-            print("City : \(city)")
+            
+            for i in 0...7 {
+                let day = forecast[i]
+                guard let timeRaw = day["time"] as? String else {return}
+                guard let skyRaw = day["sky"] as? [String:String] else {return}
+                guard let skyDesc = skyRaw["name"] else {return}
+                guard let code = skyRaw["code"] else {return}
+                guard let tempRaw = day["temperature"] as? [String:String] else {return}
+                guard let tc = tempRaw["tc"] else {return}
+                guard let tmax = tempRaw["tmax"] else {return}
+                guard let tmin = tempRaw["tmin"] else {return}
+                guard let humidity = day["humidity"] as? String else {return}
+                
+                let separatedTime = timeRaw.split(separator: "T").first
+                guard let date = separatedTime?.split(separator: "-").last else {return}
+                
+                
+                let fweather = ForecastWeather(code: Int(code)!, day: String(date), tc: tc, tmax: tmax, tmin: tmin, humidity: humidity, status: skyDesc)
+                self.forecastWeather.append(fweather)
+            }
+            
+            completed()
         }
     }
 }
