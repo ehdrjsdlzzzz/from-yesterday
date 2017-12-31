@@ -9,5 +9,19 @@
 import Foundation
 
 class ForecastWeather {
+    var day:String
+    var tc:Double
+    var tmax:Double
+    var tmin:Double
+    var humidity:Double
+    var status:String
     
+    init(day:String, tc:Double, tmax:Double, tmin:Double, humidity:Double, status: String) {
+        self.day = day
+        self.tc = tc
+        self.tmax = tmax
+        self.tmin = tmin
+        self.humidity = humidity
+        self.status = status
+    }
 }

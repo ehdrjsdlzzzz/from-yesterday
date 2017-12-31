@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+func unixToDay(_ unixTime:Double)->String {
+    let unixTimeToReal = Date(timeIntervalSince1970: unixTime) // "Dec 31, 2017 at 9:00 PM"
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd"
+    return dateFormatter.string(from: unixTimeToReal) // "31"
+}
