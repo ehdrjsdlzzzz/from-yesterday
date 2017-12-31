@@ -9,17 +9,17 @@
 import Foundation
 
 class CurrentWeather{
-    var country: String
-    var area: String
+    var city: String
+    var county: String?
+    var village: String?
     var status: String
-    var current: Double
-    var humidity: Double
-    var min: Double
-    var max: Double
+    var current: String
+    var humidity: String
+    var min: String
+    var max: String
     
-    init(country: String, area: String, status:String, current:Double, humidity: Double, min: Double, max: Double) {
-        self.country = country
-        self.area = area
+    init(city: String, status:String, current:String, humidity: String, min: String, max: String) {
+        self.city = city
         self.status = status
         self.current = current
         self.humidity = humidity
