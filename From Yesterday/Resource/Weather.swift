@@ -113,7 +113,7 @@ enum Weather:Int{
         case .C800, .C951, .C950:
             return "sun.png"
         case .C801, .C802, .C803, .C804:
-            return "clound-1.png"
+            return "cloud-1.png"
         case .C902, .C962:
             return "tornado.png"
         case .C903:
