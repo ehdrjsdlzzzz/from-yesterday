@@ -16,6 +16,8 @@ class ForecastWeather {
     var tmin:String
     var humidity:String
     var status:String
+    var country:String?
+    var city:String?
     
     init(code:Int, day:String, tc:String, tmax:String, tmin:String, humidity:String, status: String) {
         self.code = code
