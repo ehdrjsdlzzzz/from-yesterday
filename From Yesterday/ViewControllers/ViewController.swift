@@ -22,8 +22,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     var currentWeather: CurrentWeather?
     var forcastWeather: [ForecastWeather] = []
     
-    
-    
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -73,13 +71,18 @@ extension ViewController {
             Location.shared.lat = currentLocation.coordinate.latitude
             Location.shared.lon = currentLocation.coordinate.longitude
             
-            downloadForcastWeather {
-                self.areaLabel.text = self.currentWeather?.area
+            downloadCurrentWeather {
+//                print(Location.shared.lat)
+//                print(Location.shared.lon)
+                self.areaLabel.text = self.currentWeather?.city
                 self.statusLabel.text = self.currentWeather?.status
                 self.currentLabel.text = "\(self.currentWeather!.current)"
                 self.minMaxLabel.text = "\(self.currentWeather!.max)/\(self.currentWeather!.min)"
+                
+                self.downloadForecastWeather {
+                    
+                }
             }
-            
         } else {
             locationManager.requestWhenInUseAuthorization()
             locationAuthStatus()
@@ -87,34 +90,45 @@ extension ViewController {
     }
 }
 
-// MARK: Download CurrentWeather
+// MARK: Download Weather
 
 extension ViewController {
-    func downloadForcastWeather(completed: @escaping ()->() ){
-        Alamofire.request(CURRENT_WEATHER_URL).responseJSON { (response) in
+    func downloadCurrentWeather(completed: @escaping ()->() ){
+        Alamofire.request(CURRENT_WEATHER_URL, headers: HTTP_HEADER).responseJSON { (response) in
+
             guard let result = response.result.value as? [String:Any] else {return}
-            guard let weather = result["weather"] as? [[String:Any]] else {return}
-            guard let main = result["main"] as? [String:Double] else {return}
-            guard let sys = result["sys"] as? [String:Any] else {return}
+            guard let weather = result["weather"] as? [String: Any] else {return}
+            guard let hourlyArr = weather["hourly"] as? [Any] else {return}
+            if hourlyArr.count == 0 {
+                return
+            }
+            guard let hourly = hourlyArr[0] as? [String: Any] else {return}
+            guard let grid = hourly["grid"] as? [String: String] else {return}
+            guard let sky = hourly["sky"] as? [String: String] else {return}
+            guard let temperature = hourly["temperature"] as? [String:String] else {return}
             
-            guard let name = result["name"] as? String else {return}
+            guard let city = grid["city"] else {return}
+            guard let status = sky["name"] else {return}
+            guard let tc = temperature["tc"] else {return}
+            guard let tmax = temperature["tmax"] else {return}
+            guard let tmin = temperature["tmin"] else {return}
+
             
-            guard let weatherStatus = weather[0]["main"] as? String else {return}
-            guard let currentTemp = main["temp"] else {return}
-            guard let humidity = main["humidity"] else {return}
-            guard let todayMax = main["temp_max"] else {return}
-            guard let todayMin = main["temp_min"] else {return}
-            guard let country = sys["country"] as? String else {return}
+            guard let humiditiy = hourly["humidity"] as? String else {return}
             
-            let currentToCelcius = currentTemp - 273.15
-            let minToCelcius = todayMin - 273.15
-            let maxToCelcius = todayMax - 273.15
-            
-            self.currentWeather = CurrentWeather(country: country, area: name, status: weatherStatus, current: Double.rounded(currentToCelcius), humidity: humidity, min: Double.rounded(minToCelcius), max: Double.rounded(maxToCelcius))
+            self.currentWeather = CurrentWeather(city: city, status: status, current: tc, humidity: humiditiy, min: tmin, max: tmax)
             
             completed()
         }
     }
+    
+    func downloadForecastWeather(completed: @escaping ()->()){
+        Alamofire.request(FORECAST_WEATHER_URL).responseJSON { (response) in
+            guard let result = response.result.value as? [String:Any] else {return}
+            print(result)
+        }
+    }
+    
 }
 
 

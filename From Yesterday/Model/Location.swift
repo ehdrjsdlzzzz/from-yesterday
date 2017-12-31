@@ -14,7 +14,6 @@ class Location {
     
     
     // default : Seoul
-    
     var lat:Double = 37.566870
     var lon:Double = 126.977974
     
