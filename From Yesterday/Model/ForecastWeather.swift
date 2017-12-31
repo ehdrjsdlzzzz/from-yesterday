@@ -9,14 +9,16 @@
 import Foundation
 
 class ForecastWeather {
+    var code: Int
     var day:String
-    var tc:Double
-    var tmax:Double
-    var tmin:Double
-    var humidity:Double
+    var tc:String
+    var tmax:String
+    var tmin:String
+    var humidity:String
     var status:String
     
-    init(day:String, tc:Double, tmax:Double, tmin:Double, humidity:Double, status: String) {
+    init(code:Int, day:String, tc:String, tmax:String, tmin:String, humidity:String, status: String) {
+        self.code = code
         self.day = day
         self.tc = tc
         self.tmax = tmax
