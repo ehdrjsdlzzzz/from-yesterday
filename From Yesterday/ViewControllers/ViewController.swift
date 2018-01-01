@@ -51,6 +51,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         
         carouselView.register(UINib(nibName: weatherCell.reuseableIdentifier, bundle: nil), forCellWithReuseIdentifier: weatherCell.reuseableIdentifier)
     
+        self.carouselView.delegate = self
+        self.carouselView.dataSource = self
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -126,9 +129,8 @@ extension ViewController {
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
                 self.weatherIcon.image = UIImage(named: weatherImage!)
                 SVProgressHUD.dismiss()
+                self.carouselView.reloadData()
                 
-                self.carouselView.delegate = self
-                self.carouselView.dataSource = self
             }
         } else {
             locationManager.requestWhenInUseAuthorization()
