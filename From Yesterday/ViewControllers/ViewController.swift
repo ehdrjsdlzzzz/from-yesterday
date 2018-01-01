@@ -35,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         
         title = "From Yesterday"
         
+        
+        
         statusLabel.text = nil
         areaLabel.text = nil
         dateLabel.text = "Today"
@@ -48,10 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
         carouselView.register(UINib(nibName: weatherCell.reuseableIdentifier, bundle: nil), forCellWithReuseIdentifier: weatherCell.reuseableIdentifier)
-        
-        carouselView.delegate = self
-        carouselView.dataSource = self
-        
+    
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -67,15 +66,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 // MARK: UICollectionViewDataSource
 
 extension ViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(forecastWeather.count - 1)
         return forecastWeather.count - 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath)
         
+        
         if let scailngCell = cell as? ScalingCarouselCell {
-            scailngCell.mainView.backgroundColor = .red
+            scailngCell.mainView.layer.borderWidth = 2.0
+            scailngCell.mainView.layer.borderColor = UIColor.darkGray.cgColor
         }
         
         return cell
@@ -91,6 +94,7 @@ extension ViewController: UICollectionViewDelegate {
         print(currentCenterIndex)
     }
 }
+
 
 // MARK: Target-Action Method
 
@@ -119,10 +123,10 @@ extension ViewController {
                 self.currentLabel.text = currentWeather.tc
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
                 self.weatherIcon.image = UIImage(named: weatherImage!)
-                self.forecastWeather.forEach({
-                    print("\($0.day)일 \($0.tc)도 최대\($0.tmax)/최소\($0.tmin) 습도: \($0.humidity) 코드\($0.code)")
                 SVProgressHUD.dismiss()
-                })
+                
+                self.carouselView.delegate = self
+                self.carouselView.dataSource = self
             }
         } else {
             locationManager.requestWhenInUseAuthorization()
@@ -154,7 +158,7 @@ extension ViewController {
             
             guard let forecast = forecastDays[0]["forecast"] as? [[String:Any]] else {return}
             
-            for i in 0...7 {
+            for i in 0...4 {
                 let day = forecast[i]
                 guard let timeRaw = day["time"] as? String else {return}
                 guard let skyRaw = day["sky"] as? [String:String] else {return}

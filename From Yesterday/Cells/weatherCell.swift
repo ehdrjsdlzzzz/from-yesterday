@@ -10,7 +10,7 @@ import UIKit
 import ScalingCarousel
 
 class weatherCell: ScalingCarouselCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     
