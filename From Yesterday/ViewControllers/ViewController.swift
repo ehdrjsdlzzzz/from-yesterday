@@ -34,13 +34,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         
         statusLabel.text = nil
         areaLabel.text = nil
-        dateLabel.text = nil
+        dateLabel.text = "Today"
         currentLabel.text = nil
-    
+        
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = #imageLiteral(resourceName: "logo")
+        navigationItem.titleView = imageView
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
-        
-        setCurrentDate()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -65,15 +67,6 @@ extension ViewController {
 // MARK: Additional Method
 
 extension ViewController {
-    func setCurrentDate(){
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let stringDate: String = dateFormatter.string(from: date)
-        var dateArray = stringDate.split(separator: "-")
-//        self.dateLabel.text = "\(dateArray[2])일"
-        self.dateLabel.text = "Today"
-    }
     
     func locationAuthStatus(){
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
