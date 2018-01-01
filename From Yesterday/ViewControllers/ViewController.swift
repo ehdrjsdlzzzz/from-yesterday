@@ -114,6 +114,8 @@ extension ViewController {
             Location.shared.lat = currentLocation.coordinate.latitude
             Location.shared.lon = currentLocation.coordinate.longitude
             
+            self.forecastWeather.removeAll() // Initialize
+            
             downloadCurrentWeather {
                 print(Location.shared.lat)
                 print(Location.shared.lon)
