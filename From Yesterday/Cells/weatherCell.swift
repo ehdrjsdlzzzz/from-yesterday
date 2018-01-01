@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import ScalingCarousel
 
-class weatherCell: UICollectionViewCell {
+class weatherCell: ScalingCarouselCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
 }

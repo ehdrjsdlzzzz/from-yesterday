@@ -9,8 +9,11 @@ import UIKit
 import Alamofire
 import CoreLocation
 import SVProgressHUD
+import ScalingCarousel
 
 class ViewController: UIViewController, CLLocationManagerDelegate{
+    
+    @IBOutlet weak var carouselView: ScalingCarouselView!
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
@@ -18,14 +21,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var currentLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     
-    var currentLocation: CLLocation!
-    
     var country:String?
     var city:String?
     
     var forecastWeather: [ForecastWeather] = []
     
     let locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
+        carouselView.register(UINib(nibName: weatherCell.reuseableIdentifier, bundle: nil), forCellWithReuseIdentifier: weatherCell.reuseableIdentifier)
+        
+        carouselView.delegate = self
+        carouselView.dataSource = self
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -53,6 +61,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         locationAuthStatus()
+    }
+}
+
+// MARK: UICollectionViewDataSource
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return forecastWeather.count - 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath)
+        
+        if let scailngCell = cell as? ScalingCarouselCell {
+            scailngCell.mainView.backgroundColor = .red
+        }
+        
+        return cell
+    }
+}
+
+// MARK: UICollectionViewDelegate
+
+extension ViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        carouselView.didScroll()
+        guard let currentCenterIndex = carouselView.currentCenterCellIndex?.row else { return  }
+        print(currentCenterIndex)
     }
 }
 

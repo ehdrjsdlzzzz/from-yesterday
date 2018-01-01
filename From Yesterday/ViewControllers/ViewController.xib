@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="From_Yesterday" customModuleProvider="target">
             <connections>
                 <outlet property="areaLabel" destination="8tb-SN-h5L" id="NJl-AX-Cuw"/>
+                <outlet property="carouselView" destination="jw3-7S-icC" id="3WS-gj-csr"/>
                 <outlet property="currentLabel" destination="LtL-49-X4C" id="u6r-QE-49Y"/>
                 <outlet property="dateLabel" destination="Yv6-vz-92X" id="k8A-7t-uwC"/>
                 <outlet property="statusLabel" destination="lJb-Mn-SDo" id="hri-d0-dYi"/>
@@ -67,19 +68,40 @@
                         <constraint firstAttribute="width" constant="150" id="eIp-bv-3kr"/>
                     </constraints>
                 </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jw3-7S-icC" customClass="ScalingCarouselView" customModule="ScalingCarousel">
+                    <rect key="frame" x="0.0" y="378" width="320" height="190"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="qxO-b7-6fI"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h34-E7-HK0">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="jw3-7S-icC" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="AeI-8U-xK7"/>
                 <constraint firstItem="8tb-SN-h5L" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="BnZ-R4-4aC"/>
+                <constraint firstItem="jw3-7S-icC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NfU-Zq-GPA"/>
                 <constraint firstItem="8tb-SN-h5L" firstAttribute="top" secondItem="Rki-Cn-Vzg" secondAttribute="bottom" constant="30" id="WMj-nf-TSi"/>
                 <constraint firstItem="cNp-zB-RMP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="c0W-lP-bWe"/>
+                <constraint firstItem="jw3-7S-icC" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="l9n-t7-o1b"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8tb-SN-h5L" secondAttribute="trailing" constant="8" id="liq-t0-gDp"/>
                 <constraint firstItem="8tb-SN-h5L" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.9" id="nB1-nz-fMx"/>
                 <constraint firstItem="Rki-Cn-Vzg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oCg-O5-HvC"/>
                 <constraint firstItem="cNp-zB-RMP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.1" id="vP3-un-DjS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-96.5" y="-42.5"/>
+            <point key="canvasLocation" x="-97" y="-43"/>
         </view>
     </objects>
 </document>
