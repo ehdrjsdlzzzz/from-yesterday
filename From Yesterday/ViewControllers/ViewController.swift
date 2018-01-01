@@ -71,7 +71,8 @@ extension ViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate: String = dateFormatter.string(from: date)
         var dateArray = stringDate.split(separator: "-")
-        self.dateLabel.text = "\(dateArray[2])일"
+//        self.dateLabel.text = "\(dateArray[2])일"
+        self.dateLabel.text = "Today"
     }
     
     func locationAuthStatus(){
@@ -84,11 +85,10 @@ extension ViewController {
                 print(Location.shared.lat)
                 print(Location.shared.lon)
                 let currentWeather = self.forecastWeather[0]
-                self.areaLabel.text = "\(self.country!) \(self.city!)"
-                self.statusLabel.text = currentWeather.status
-                self.currentLabel.text = "\(currentWeather.tc)\u{00B0}C"
+                self.areaLabel.text = "\(self.city!), \(self.country!) "
+                self.statusLabel.text = currentWeather.status.uppercased()
+                self.currentLabel.text = currentWeather.tc
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
-                print(weatherImage!)
                 self.weatherIcon.image = UIImage(named: weatherImage!)
                 self.forecastWeather.forEach({
                     print("\($0.day)일 \($0.tc)도 최대\($0.tmax)/최소\($0.tmin) 습도: \($0.humidity) 코드\($0.code)")
@@ -141,7 +141,7 @@ extension ViewController {
                 guard let date = separatedTime?.split(separator: "-").last else {return}
                 
                 
-                let fweather = ForecastWeather(code: Int(code)!, day: String(date), tc: tc, tmax: tmax, tmin: tmin, humidity: humidity, status: skyDesc)
+                let fweather = ForecastWeather(code: Int(code)!, day: String(date), tc: tc.doubleToInt.degree, tmax: tmax.doubleToInt.degree, tmin: tmin.doubleToInt.degree, humidity: humidity, status: skyDesc)
                 self.forecastWeather.append(fweather)
             }
             

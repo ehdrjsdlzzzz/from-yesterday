@@ -18,6 +18,8 @@
 		3E2D92D31FF6992600179E1D /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D92D21FF6992600179E1D /* URL.swift */; };
 		3E2D92D61FF6A0B200179E1D /* Rounding + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D92D51FF6A0B200179E1D /* Rounding + Double.swift */; };
 		3E4F0DBA1FF5371600C809A2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4F0DB91FF5371600C809A2 /* ViewController.xib */; };
+		3E9010E61FF9F59E00FEEA4E /* Unicode + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */; };
+		3E9010E81FF9F66C00FEEA4E /* Double + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E71FF9F66C00FEEA4E /* Double + String.swift */; };
 		3EEBE4C11FF8D1770095B104 /* UnixTime + Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */; };
 		661C9AA90BA79B6079F8E152 /* Pods_From_Yesterday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */; };
 /* End PBXBuildFile section */
@@ -37,6 +39,8 @@
 		3E2D92D21FF6992600179E1D /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		3E2D92D51FF6A0B200179E1D /* Rounding + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rounding + Double.swift"; sourceTree = "<group>"; };
 		3E4F0DB91FF5371600C809A2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unicode + String.swift"; sourceTree = "<group>"; };
+		3E9010E71FF9F66C00FEEA4E /* Double + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + String.swift"; sourceTree = "<group>"; };
 		3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnixTime + Date.swift"; sourceTree = "<group>"; };
 		54CD356C7A199BF1AA380673 /* Pods-From Yesterday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-From Yesterday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday.debug.xcconfig"; sourceTree = "<group>"; };
 		EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_From_Yesterday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +124,8 @@
 			children = (
 				3E2D92D51FF6A0B200179E1D /* Rounding + Double.swift */,
 				3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */,
+				3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */,
+				3E9010E71FF9F66C00FEEA4E /* Double + String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -275,7 +281,9 @@
 				3E2D92D61FF6A0B200179E1D /* Rounding + Double.swift in Sources */,
 				3E2D92D11FF6973400179E1D /* ForecastWeather.swift in Sources */,
 				3E14884C1FF4BBED00F2711E /* ViewController.swift in Sources */,
+				3E9010E81FF9F66C00FEEA4E /* Double + String.swift in Sources */,
 				3E2D92CD1FF6950C00179E1D /* Location.swift in Sources */,
+				3E9010E61FF9F59E00FEEA4E /* Unicode + String.swift in Sources */,
 				3E2A79CE1FF9192A0058D8C7 /* Weather.swift in Sources */,
 				3EEBE4C11FF8D1770095B104 /* UnixTime + Date.swift in Sources */,
 				3E2D92CF1FF6972B00179E1D /* CurrentWeather.swift in Sources */,
