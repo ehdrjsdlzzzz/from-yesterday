@@ -71,18 +71,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(forecastWeather.count - 1)
-        return forecastWeather.count - 1
+        return forecastWeather.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath) as! weatherCell
+ 
+        cell.mainView.layer.borderWidth = 2.0
+        cell.mainView.layer.borderColor = UIColor.darkGray.cgColor
+        let weatherIconImage = UIImage(named: Weather(rawValue: forecastWeather[indexPath.row].code)!.image())
         
-        
-        if let scailngCell = cell as? ScalingCarouselCell {
-            scailngCell.mainView.layer.borderWidth = 2.0
-            scailngCell.mainView.layer.borderColor = UIColor.darkGray.cgColor
-        }
+        cell.setCellValue(weatherIcon: weatherIconImage!, day: forecastWeather[indexPath.row].day, tmax: forecastWeather[indexPath.row].tmax, tmin: forecastWeather[indexPath.row].tmin)
         
         return cell
     }
@@ -93,8 +92,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         carouselView.didScroll()
-        guard let currentCenterIndex = carouselView.currentCenterCellIndex?.row else { return  }
-        print(currentCenterIndex)
+//        guard let currentCenterIndex = carouselView.currentCenterCellIndex?.row else { return  }
     }
 }
 
@@ -122,12 +120,15 @@ extension ViewController {
             downloadCurrentWeather {
                 print(Location.shared.lat)
                 print(Location.shared.lon)
-                let currentWeather = self.forecastWeather[0]
+                let currentWeather = self.forecastWeather.removeFirst()
                 self.areaLabel.text = "\(self.city!), \(self.country!) "
                 self.statusLabel.text = currentWeather.status.uppercased()
-                self.currentLabel.text = currentWeather.tc
+                self.currentLabel.text = "\(currentWeather.tmax) / \(currentWeather.tmin)"
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
                 self.weatherIcon.image = UIImage(named: weatherImage!)
+                self.forecastWeather.forEach({
+                    print("\(self.city!) \(self.country!) \($0.day) \($0.tc) \($0.tmax) \($0.tmin)")
+                })
                 SVProgressHUD.dismiss()
                 self.carouselView.reloadData()
                 
@@ -173,7 +174,6 @@ extension ViewController {
                 guard let tmax = tempRaw["tmax"] else {return}
                 guard let tmin = tempRaw["tmin"] else {return}
                 guard let humidity = day["humidity"] as? String else {return}
-                
                 let separatedTime = timeRaw.split(separator: "T").first
                 guard let date = separatedTime?.split(separator: "-").last else {return}
                 
@@ -186,5 +186,3 @@ extension ViewController {
         }
     }
 }
-
-

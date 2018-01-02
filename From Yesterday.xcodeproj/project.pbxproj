@@ -22,7 +22,7 @@
 		3E9010E81FF9F66C00FEEA4E /* Double + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E71FF9F66C00FEEA4E /* Double + String.swift */; };
 		3ED06DCC1FFA697100130379 /* weatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED06DCA1FFA697100130379 /* weatherCell.swift */; };
 		3ED06DCD1FFA697100130379 /* weatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED06DCB1FFA697100130379 /* weatherCell.xib */; };
-		3ED06DCF1FFA698400130379 /* Identifier + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED06DCE1FFA698400130379 /* Identifier + String.swift */; };
+		3ED06DCF1FFA698400130379 /* Identifier + NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED06DCE1FFA698400130379 /* Identifier + NSObject.swift */; };
 		3EEBE4C11FF8D1770095B104 /* UnixTime + Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */; };
 		661C9AA90BA79B6079F8E152 /* Pods_From_Yesterday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		3E9010E71FF9F66C00FEEA4E /* Double + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + String.swift"; sourceTree = "<group>"; };
 		3ED06DCA1FFA697100130379 /* weatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherCell.swift; sourceTree = "<group>"; };
 		3ED06DCB1FFA697100130379 /* weatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = weatherCell.xib; sourceTree = "<group>"; };
-		3ED06DCE1FFA698400130379 /* Identifier + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier + String.swift"; sourceTree = "<group>"; };
+		3ED06DCE1FFA698400130379 /* Identifier + NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier + NSObject.swift"; sourceTree = "<group>"; };
 		3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnixTime + Date.swift"; sourceTree = "<group>"; };
 		54CD356C7A199BF1AA380673 /* Pods-From Yesterday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-From Yesterday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday.debug.xcconfig"; sourceTree = "<group>"; };
 		EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_From_Yesterday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +133,7 @@
 				3EEBE4C01FF8D1770095B104 /* UnixTime + Date.swift */,
 				3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */,
 				3E9010E71FF9F66C00FEEA4E /* Double + String.swift */,
-				3ED06DCE1FFA698400130379 /* Identifier + String.swift */,
+				3ED06DCE1FFA698400130379 /* Identifier + NSObject.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				3E14884C1FF4BBED00F2711E /* ViewController.swift in Sources */,
 				3E9010E81FF9F66C00FEEA4E /* Double + String.swift in Sources */,
 				3E2D92CD1FF6950C00179E1D /* Location.swift in Sources */,
-				3ED06DCF1FFA698400130379 /* Identifier + String.swift in Sources */,
+				3ED06DCF1FFA698400130379 /* Identifier + NSObject.swift in Sources */,
 				3E9010E61FF9F59E00FEEA4E /* Unicode + String.swift in Sources */,
 				3E2A79CE1FF9192A0058D8C7 /* Weather.swift in Sources */,
 				3EEBE4C11FF8D1770095B104 /* UnixTime + Date.swift in Sources */,
