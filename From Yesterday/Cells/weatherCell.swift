@@ -21,6 +21,7 @@ class weatherCell: ScalingCarouselCell {
         dayLabel.text = nil
         descLabel.text = nil
         tempLabel.text = nil
+        self.mainView.backgroundColor = UIColor.background
     }
 
     override func prepareForReuse() {
@@ -36,9 +37,10 @@ class weatherCell: ScalingCarouselCell {
 
 extension weatherCell {
     func setCellValue(weatherIcon:UIImage, day: String, desc: String, tmax:String, tmin: String){
-        self.weatherIcon.image = weatherIcon
+        self.weatherIcon.image = weatherIcon.withRenderingMode(.alwaysTemplate)
+        self.weatherIcon.tintColor = UIColor.appTint
         self.dayLabel.text = "\(day)일"
         self.descLabel.text = desc.uppercased()
-        self.tempLabel.text = "\(tmax)/\(tmin)"
+        self.tempLabel.text = "\(tmax) / \(tmin)"
     }
 }

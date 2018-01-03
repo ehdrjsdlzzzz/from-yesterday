@@ -17,7 +17,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currentLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     
@@ -33,15 +32,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "From Yesterday"
-        
-        
-        
         statusLabel.text = nil
         areaLabel.text = nil
-        dateLabel.text = "Today"
         currentLabel.text = nil
-        
+    
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = #imageLiteral(resourceName: "logo")
@@ -55,6 +49,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         self.carouselView.delegate = self
         self.carouselView.dataSource = self
     
+        self.view.backgroundColor = UIColor.background
+        self.carouselView.backgroundColor = UIColor.background
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestWhenInUseAuthorization()
@@ -79,7 +76,7 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath) as! weatherCell
  
         cell.mainView.layer.borderWidth = 2.0
-        cell.mainView.layer.borderColor = UIColor.backgroundTint.cgColor
+        cell.mainView.layer.borderColor = UIColor.background.cgColor
         let weatherIconImage = UIImage(named: Weather(rawValue: forecastWeather[indexPath.row].code)!.image())
         
         cell.setCellValue(weatherIcon: weatherIconImage!, day: forecastWeather[indexPath.row].day, desc: forecastWeather[indexPath.row].status,tmax: forecastWeather[indexPath.row].tmax, tmin: forecastWeather[indexPath.row].tmin)
