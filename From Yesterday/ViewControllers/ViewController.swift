@@ -46,16 +46,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         imageView.contentMode = .scaleAspectFit
         imageView.image = #imageLiteral(resourceName: "logo")
         navigationItem.titleView = imageView
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        navigationController?.navigationBar.tintColor = UIColor.appTint
         
         carouselView.register(UINib(nibName: weatherCell.reuseableIdentifier, bundle: nil), forCellWithReuseIdentifier: weatherCell.reuseableIdentifier)
     
         self.carouselView.delegate = self
         self.carouselView.dataSource = self
-        
+    
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
     }
@@ -78,10 +79,10 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weatherCell.reuseableIdentifier, for: indexPath) as! weatherCell
  
         cell.mainView.layer.borderWidth = 2.0
-        cell.mainView.layer.borderColor = UIColor.darkGray.cgColor
+        cell.mainView.layer.borderColor = UIColor.backgroundTint.cgColor
         let weatherIconImage = UIImage(named: Weather(rawValue: forecastWeather[indexPath.row].code)!.image())
         
-        cell.setCellValue(weatherIcon: weatherIconImage!, day: forecastWeather[indexPath.row].day, tmax: forecastWeather[indexPath.row].tmax, tmin: forecastWeather[indexPath.row].tmin)
+        cell.setCellValue(weatherIcon: weatherIconImage!, day: forecastWeather[indexPath.row].day, desc: forecastWeather[indexPath.row].status,tmax: forecastWeather[indexPath.row].tmax, tmin: forecastWeather[indexPath.row].tmin)
         
         return cell
     }
@@ -125,14 +126,15 @@ extension ViewController {
                 self.statusLabel.text = currentWeather.status.uppercased()
                 self.currentLabel.text = "\(currentWeather.tmax) / \(currentWeather.tmin)"
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
-                self.weatherIcon.image = UIImage(named: weatherImage!)
+                self.weatherIcon.image = UIImage(named: weatherImage!)?.withRenderingMode(.alwaysTemplate) // posting
+                self.weatherIcon.tintColor = .appTint
                 self.forecastWeather.forEach({
                     print("\(self.city!) \(self.country!) \($0.day) \($0.tc) \($0.tmax) \($0.tmin)")
                 })
                 SVProgressHUD.dismiss()
                 self.carouselView.reloadData()
-                
             }
+            
         } else {
             locationManager.requestWhenInUseAuthorization()
             locationAuthStatus()

@@ -21,7 +21,13 @@ class ForecastWeather {
     
     init(code:Int, day:String, tc:String, tmax:String, tmin:String, humidity:String, status: String) {
         self.code = code
-        self.day = day
+        var rawDay = day
+        if day.hasPrefix("0") {
+            rawDay = String(day.suffix(1))
+            self.day = rawDay
+        }else{
+            self.day = day
+        }
         self.tc = tc
         self.tmax = tmax
         self.tmin = tmin
