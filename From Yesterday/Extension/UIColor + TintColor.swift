@@ -11,7 +11,7 @@ import Foundation
 
 extension UIColor {
     static var appTint: UIColor{
-        return UIColor(red: 220.0/255.0, green: 84.0/255.0, blue: 62.0/255.0, alpha: 1.0)
+        return UIColor(red: 220.0/255.0, green: 84.0/255.0, blue: 62.0/255.0, alpha: 1.0) // Posting
     }
     
     static var background: UIColor {
