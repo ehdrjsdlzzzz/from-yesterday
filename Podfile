@@ -6,3 +6,8 @@ target 'From Yesterday' do
   pod 'SVProgressHUD'
   pod "ScalingCarousel"
 end
+
+target 'From Yesterday Widget' do
+  use_frameworks!
+  pod 'Alamofire'
+end

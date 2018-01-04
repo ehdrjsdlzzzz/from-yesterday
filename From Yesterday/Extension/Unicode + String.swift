@@ -10,6 +10,6 @@ import Foundation
 
 extension String {
     var degree: String {
-        return "\(self)\u{00B0}C"
+        return "\(self)\u{00B0}"
     }
 }

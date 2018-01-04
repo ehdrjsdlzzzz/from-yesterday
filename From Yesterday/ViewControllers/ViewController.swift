@@ -19,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var currentLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var maxMinLabel: UILabel!
     
     var country:String?
     var city:String?
@@ -115,13 +116,14 @@ extension ViewController {
             
             self.forecastWeather.removeAll() // Initialize
             
-            downloadCurrentWeather {
+            downloadForecastWeather {
                 print(Location.shared.lat)
                 print(Location.shared.lon)
                 let currentWeather = self.forecastWeather.removeFirst()
-                self.areaLabel.text = "\(self.city!), \(self.country!) "
+                self.areaLabel.text = "\(self.city!)"
                 self.statusLabel.text = currentWeather.status.uppercased()
-                self.currentLabel.text = "\(currentWeather.tmax) / \(currentWeather.tmin)"
+                self.maxMinLabel.text = "\(currentWeather.tmax) / \(currentWeather.tmin)"
+                self.currentLabel.text = currentWeather.tc
                 let weatherImage = Weather(rawValue:currentWeather.code)?.image()
                 self.weatherIcon.image = UIImage(named: weatherImage!)?.withRenderingMode(.alwaysTemplate) // posting
                 self.weatherIcon.tintColor = .appTint
@@ -142,9 +144,9 @@ extension ViewController {
 // MARK: Download Weather
 
 extension ViewController {
-    func downloadCurrentWeather(completed: @escaping ()->() ){
+    func downloadForecastWeather(completed: @escaping ()->() ){
         SVProgressHUD.show()
-        Alamofire.request(CURRENT_WEATHER_URL, headers: HTTP_HEADER).responseJSON { (response) in
+        Alamofire.request(FORECAST_WEATHER_URL, headers: HTTP_HEADER).responseJSON { (response) in
             guard let value = response.result.value as? [String:Any] else {return}
             guard let result = value["result"] as? [String:Any] else {return}
             guard let code = result["code"] as? Int else {return}
