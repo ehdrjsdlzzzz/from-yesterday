@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 let BASE = "http://apis.skplanetx.com/gweather"
-let CURRENT = "/forecast/mid?"
+let FORECAST = "/forecast/mid?"
+let CURRENT = "/current?"
 let LAT = "&lat="
 let LON = "&lon="
 let VERSION = "version=1"
@@ -21,6 +22,7 @@ let HTTP_HEADER:HTTPHeaders = [
     "appKey": APPKEY
 ]
 
-// 8개씩 3,6,9,12,15,18,21,24 //
+let FORECAST_WEATHER_URL = BASE + FORECAST + VERSION + LAT + "\(Location.shared.lat)" + LON + "\(Location.shared.lon)" + TIMEZONE + LOCAL
 let CURRENT_WEATHER_URL = BASE + CURRENT + VERSION + LAT + "\(Location.shared.lat)" + LON + "\(Location.shared.lon)" + TIMEZONE + LOCAL
+
 
