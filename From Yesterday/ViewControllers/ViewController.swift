@@ -36,6 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         statusLabel.text = nil
         areaLabel.text = nil
         currentLabel.text = nil
+        maxMinLabel.text = nil
     
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

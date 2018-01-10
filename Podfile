@@ -5,6 +5,7 @@ target 'From Yesterday' do
   pod 'Alamofire'
   pod 'SVProgressHUD'
   pod "ScalingCarousel"
+  pod 'Firebase/Core'
 end
 
 target 'From Yesterday Widget' do
