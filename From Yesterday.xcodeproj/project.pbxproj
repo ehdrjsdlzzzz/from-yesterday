@@ -18,7 +18,6 @@
 		3E2D92D61FF6A0B200179E1D /* Rounding + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D92D51FF6A0B200179E1D /* Rounding + Double.swift */; };
 		3E3569971FFCC19200208342 /* UIColor + TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3569961FFCC19200208342 /* UIColor + TintColor.swift */; };
 		3E4F0DBA1FF5371600C809A2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4F0DB91FF5371600C809A2 /* ViewController.xib */; };
-		3E7C26912005DF7000FA7DA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E7C26902005DF7000FA7DA1 /* GoogleService-Info.plist */; };
 		3E9010E61FF9F59E00FEEA4E /* Unicode + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */; };
 		3E9010E81FF9F66C00FEEA4E /* Double + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E71FF9F66C00FEEA4E /* Double + String.swift */; };
 		3ED06DCC1FFA697100130379 /* weatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED06DCA1FFA697100130379 /* weatherCell.swift */; };
@@ -35,6 +34,7 @@
 		3EEB5F741FFE5BE7003999C3 /* Unicode + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */; };
 		3EEB5F751FFE5BE7003999C3 /* Double + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9010E71FF9F66C00FEEA4E /* Double + String.swift */; };
 		3EEB5F761FFE5F5B003999C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E1488501FF4BBED00F2711E /* Assets.xcassets */; };
+		3EF85FDB20259B3F009B68AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF85FDA20259B3F009B68AE /* GoogleService-Info.plist */; };
 		661C9AA90BA79B6079F8E152 /* Pods_From_Yesterday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA603396C6345291D097B2E3 /* Pods_From_Yesterday.framework */; };
 		75649B05110C1845D05D7DD3 /* Pods_From_Yesterday_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE012A951B2AFB52058373 /* Pods_From_Yesterday_Widget.framework */; };
 		F34AD5995FD5D3A8E4FCE563 /* Pods_From_Yesterday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDDB3D51FFDC00700E7E82D /* Pods_From_Yesterday.framework */; };
@@ -79,7 +79,6 @@
 		3E2D92D51FF6A0B200179E1D /* Rounding + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rounding + Double.swift"; sourceTree = "<group>"; };
 		3E3569961FFCC19200208342 /* UIColor + TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + TintColor.swift"; sourceTree = "<group>"; };
 		3E4F0DB91FF5371600C809A2 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		3E7C26902005DF7000FA7DA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E9010E51FF9F59E00FEEA4E /* Unicode + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unicode + String.swift"; sourceTree = "<group>"; };
 		3E9010E71FF9F66C00FEEA4E /* Double + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + String.swift"; sourceTree = "<group>"; };
 		3ED06DCA1FFA697100130379 /* weatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherCell.swift; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		3EDDB3D71FFDDA7E00E7E82D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EDDB3D81FFDDB4600E7E82D /* From Yesterday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "From Yesterday.entitlements"; sourceTree = "<group>"; };
 		3EEB5F771FFE62B1003999C3 /* From Yesterday Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "From Yesterday Widget.entitlements"; sourceTree = "<group>"; };
+		3EF85FDA20259B3F009B68AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45CE012A951B2AFB52058373 /* Pods_From_Yesterday_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_From_Yesterday_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CD356C7A199BF1AA380673 /* Pods-From Yesterday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-From Yesterday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday.debug.xcconfig"; sourceTree = "<group>"; };
 		7226B9B69AD5A25DC311063A /* Pods-From Yesterday Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-From Yesterday Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-From Yesterday Widget/Pods-From Yesterday Widget.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 				3E1488491FF4BBED00F2711E /* AppDelegate.swift */,
 				3E1488501FF4BBED00F2711E /* Assets.xcassets */,
 				3E1488521FF4BBED00F2711E /* LaunchScreen.storyboard */,
-				3E7C26902005DF7000FA7DA1 /* GoogleService-Info.plist */,
 				3E1488551FF4BBED00F2711E /* Info.plist */,
+				3EF85FDA20259B3F009B68AE /* GoogleService-Info.plist */,
 			);
 			path = "From Yesterday";
 			sourceTree = "<group>";
@@ -307,6 +307,12 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					3EDDB3C01FFDBC0200E7E82D = {
@@ -346,7 +352,7 @@
 			files = (
 				3ED06DCD1FFA697100130379 /* weatherCell.xib in Resources */,
 				3E1488541FF4BBED00F2711E /* LaunchScreen.storyboard in Resources */,
-				3E7C26912005DF7000FA7DA1 /* GoogleService-Info.plist in Resources */,
+				3EF85FDB20259B3F009B68AE /* GoogleService-Info.plist in Resources */,
 				3E1488511FF4BBED00F2711E /* Assets.xcassets in Resources */,
 				3E4F0DBA1FF5371600C809A2 /* ViewController.xib in Resources */,
 			);
@@ -373,6 +379,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-From Yesterday/Pods-From Yesterday-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ScalingCarousel/ScalingCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -381,6 +388,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScalingCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

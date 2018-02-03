@@ -58,6 +58,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {

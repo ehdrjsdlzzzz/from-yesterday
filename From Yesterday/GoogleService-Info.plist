@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>416056152822-focda0p6plpc4m0ur0svpducqbsdska3.apps.googleusercontent.com</string>
+	<string>744957806511-oquov0b5dto5ped2atci1bnqd85b7kic.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.416056152822-focda0p6plpc4m0ur0svpducqbsdska3</string>
+	<string>com.googleusercontent.apps.744957806511-oquov0b5dto5ped2atci1bnqd85b7kic</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDgU7b1NhrCEXZPLJNjMPfDFvgiBWDuFu8</string>
+	<string>AIzaSyDBl_LFiqc-WrRC__OuZyE8dinAEXhAFQY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>416056152822</string>
+	<string>744957806511</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.From-Yesterday</string>
 	<key>PROJECT_ID</key>
-	<string>fromyesterday-3d00f</string>
+	<string>fromyesterday-c1eb0</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fromyesterday-3d00f.appspot.com</string>
+	<string>fromyesterday-c1eb0.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:416056152822:ios:541f5b5ca6e48a88</string>
+	<string>1:744957806511:ios:541f5b5ca6e48a88</string>
 	<key>DATABASE_URL</key>
-	<string>https://fromyesterday-3d00f.firebaseio.com</string>
+	<string>https://fromyesterday-c1eb0.firebaseio.com</string>
 </dict>
 </plist>

@@ -6,6 +6,7 @@ target 'From Yesterday' do
   pod 'SVProgressHUD'
   pod "ScalingCarousel"
   pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 end
 
 target 'From Yesterday Widget' do
